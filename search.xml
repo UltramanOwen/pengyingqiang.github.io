@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[python pandas]]></title>
       <url>http://pengyq.org/2015/12/14/python-pandas/</url>
-      <content type="html"><![CDATA[<html><br><head><br></head><br><body><br><iframe src="http://nbviewer.ipython.org/github/pengyq/pandas_share/blob/master/pandas_demo.ipynb" style="width:100%;height:700px;border:0px" target="_parent"></iframe><br></body><br></html>]]></content>
+      <content type="html"><![CDATA[<html><br><body style="margin:0"><br><iframe src="http://nbviewer.ipython.org/github/pengyq/pandas_share/blob/master/pandas_demo.ipynb" style="width:100%;height:700px;border:0px" target="_parent"></iframe><br></body><br></html>]]></content>
     </entry>
     
     <entry>
