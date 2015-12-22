@@ -33,6 +33,51 @@
 <li><p>与数据挖掘软件Weka做接口<br>RWeka: 通过这个接口，可以在R中使用Weka的所有算法。</p>
 </li>
 </ol>
+<hr>
+<h3 id="u8FDE_u7EED_u56E0_u53D8_u91CF_u7684_u9884_u6D4B_uFF1A"><a href="#u8FDE_u7EED_u56E0_u53D8_u91CF_u7684_u9884_u6D4B_uFF1A" class="headerlink" title="连续因变量的预测："></a>连续因变量的预测：</h3><p><code>stats</code>包<br><code>lm</code>函数，实现多元线性回归</p>
+<p><code>stats</code>包<br><code>glm</code>函数，实现广义线性回归</p>
+<p><code>stats</code>包<br><code>nls</code>函数，实现非线性最小二乘回归</p>
+<p><code>rpart</code>包<br><code>rpart</code>函数，基于CART算法的分类回归树模型</p>
+<p><code>RWeka</code>包<br><code>M5P</code>函数，模型树算法，集线性回归和CART算法的优点</p>
+<p><code>adabag</code>包<br><code>bagging</code>函数，基于<code>rpart</code>算法的集成算法</p>
+<p><code>adabag</code>包<br><code>boosting</code>函数，基于<code>rpart</code>算法的集成算法</p>
+<p><code>randomForest</code>包<br><code>randomForest</code>函数，基于<code>rpart</code>算法的集成算法</p>
+<p><code>e1071</code>包<br><code>svm</code>函数，支持向量机算法</p>
+<p><code>kernlab</code>包<br><code>ksvm</code>函数，基于核函数的支持向量机</p>
+<p><code>nnet</code>包<br><code>nnet</code>函数，单隐藏层的神经网络算法</p>
+<p><code>neuralnet</code>包<br><code>neuralnet</code>函数，多隐藏层多节点的神经网络算法</p>
+<p><code>RSNNS</code>包<br><code>mlp</code>函数，多层感知器神经网络</p>
+<p><code>RSNNS</code>包<br><code>rbf</code>函数，基于径向基函数的神经网络</p>
+<h3 id="u79BB_u6563_u56E0_u53D8_u91CF_u7684_u5206_u7C7B_uFF1A"><a href="#u79BB_u6563_u56E0_u53D8_u91CF_u7684_u5206_u7C7B_uFF1A" class="headerlink" title="离散因变量的分类："></a>离散因变量的分类：</h3><p><code>stats</code>包<br><code>glm</code>函数，实现Logistic回归，选择logit连接函数</p>
+<p><code>stats</code>包<br><code>knn</code>函数，k最近邻算法</p>
+<p><code>kknn</code>包<br><code>kknn</code>函数，加权的k最近邻算法</p>
+<p><code>rpart</code>包<br><code>rpart</code>函数，基于CART算法的分类回归树模型</p>
+<p><code>adabag</code>包<br><code>bagging</code>函数，基于rpart算法的集成算法</p>
+<p><code>adabag</code>包<br><code>boosting</code>函数，基于rpart算法的集成算法</p>
+<p><code>randomForest</code>包<br><code>randomForest</code>函数，基于rpart算法的集成算法</p>
+<p><code>party</code>包<br><code>ctree</code>函数，条件分类树算法</p>
+<p><code>RWeka</code>包<br><code>OneR</code>函数，一维的学习规则算法</p>
+<p><code>RWeka</code>包<br><code>JPip</code>函数，多维的学习规则算法</p>
+<p><code>RWeka</code>包<br><code>J48</code>函数，基于C4.5算法的决策树</p>
+<p><code>C50</code>包<br><code>C5.0</code>函数，基于C5.0算法的决策树</p>
+<p><code>e1071</code>包<br><code>svm</code>函数，支持向量机算法</p>
+<p><code>kernlab</code>包<br><code>ksvm</code>函数，基于核函数的支持向量机</p>
+<p><code>e1071</code>包<br><code>naiveBayes</code>函数，贝叶斯分类器算法</p>
+<p><code>klaR</code>包<br><code>NaiveBayes</code>函数，贝叶斯分类器算分</p>
+<p><code>MASS</code>包<br><code>lda</code>函数，线性判别分析</p>
+<p><code>MASS</code>包<br><code>qda</code>函数，二次判别分析</p>
+<p><code>nnet</code>包<br><code>nnet</code>函数，单隐藏层的神经网络算法</p>
+<p><code>RSNNS</code>包<br><code>mlp</code>函数，多层感知器神经网络</p>
+<p><code>RSNNS</code>包<br><code>rbf</code>函数，基于径向基函数的神经网络</p>
+<h3 id="u805A_u7C7B_uFF1A"><a href="#u805A_u7C7B_uFF1A" class="headerlink" title="聚类："></a>聚类：</h3><p><code>Nbclust</code>包<br><code>Nbclust</code>函数可以确定应该聚为几类</p>
+<p><code>stats</code>包<br><code>kmeans</code>函数，k均值聚类算法</p>
+<p><code>cluster</code>包<br><code>pam</code>函数，k中心点聚类算法</p>
+<p><code>stats</code>包<br><code>hclust</code>函数，层次聚类算法</p>
+<p><code>fpc</code>包<br><code>dbscan</code>函数，密度聚类算法</p>
+<p><code>fpc</code>包<br><code>kmeansruns</code>函数，相比于kmeans函数更加稳定，而且还可以估计聚为几类</p>
+<p><code>fpc</code>包<br><code>pamk</code>函数，相比于<code>pam</code>函数，可以给出参考的聚类个数</p>
+<p><code>mclust</code>包<br><code>Mclust</code>函数，期望最大（EM）算法</p>
+<h3 id="u5173_u8054_u89C4_u5219_uFF1A"><a href="#u5173_u8054_u89C4_u5219_uFF1A" class="headerlink" title="关联规则："></a>关联规则：</h3><p><code>arules</code>包<br><code>apriori</code>函数，Apriori关联规则算法</p>
 <p>参考文献:<a href="http://www.douban.com/note/262946137/" target="_blank" rel="external">http://www.douban.com/note/262946137/</a></p>
 <hr>
 <h4 id="u5FAE_u4FE1_u626B_u4E0B_u9762_u7684_u4E8C_u7EF4_u7801_u83B7_u53D6_u66F4_u591A_u5E72_u8D27"><a href="#u5FAE_u4FE1_u626B_u4E0B_u9762_u7684_u4E8C_u7EF4_u7801_u83B7_u53D6_u66F4_u591A_u5E72_u8D27" class="headerlink" title="微信扫下面的二维码获取更多干货"></a>微信扫下面的二维码获取更多干货</h4><p><img src="http://7xp4nl.com1.z0.glb.clouddn.com/qrcode_for_gh_217533791e24_1280.jpg?imageView2/1/w/200/h/200/q/100" alt=""><br>微信搜索 databox</p>
