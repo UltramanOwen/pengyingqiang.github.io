@@ -4,6 +4,42 @@
   
     
     <entry>
+      <title><![CDATA[R数据挖掘常用包汇总]]></title>
+      <url>http://pengyq.org/2015/12/22/R%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E5%B8%B8%E7%94%A8%E5%8C%85%E6%B1%87%E6%80%BB/</url>
+      <content type="html"><![CDATA[<p>下面列出了可用于数据挖掘的R包和函数的集合。其中一些不是专门为了数据挖掘而开发，但数据挖掘过程中这些包能帮我们不少忙，所以也包含进来。</p>
+<ol>
+<li><p>聚类<br>常用的包： fpc，cluster，pvclust，mclust<br>基于划分的方法: kmeans, pam, pamk, clara<br>基于层次的方法: hclust, pvclust, agnes, diana<br>基于模型的方法: mclust<br>基于密度的方法: dbscan<br>基于画图的方法: plotcluster, plot.hclust<br>基于验证的方法: cluster.stats</p>
+</li>
+<li><p>分类<br>常用的包：<br>rpart，party，randomForest，rpartOrdinal，tree，marginTree，<br>maptree，survival<br>决策树: rpart, ctree<br>随机森林: cforest, randomForest<br>回归, Logistic回归, Poisson回归: glm, predict, residuals<br>生存分析: survfit, survdiff, coxph</p>
+<p>以上是摘要</p>
+<a id="more"></a>
+<p>以下是余下全文</p>
+</li>
+<li><p>关联规则与频繁项集<br>常用的包：<br>arules：支持挖掘频繁项集，最大频繁项集，频繁闭项目集和关联规则<br>DRM：回归和分类数据的重复关联模型</p>
+</li>
+</ol>
+<p>APRIORI算法，广度RST算法：apriori, drm<br>ECLAT算法： 采用等价类，RST深度搜索和集合的交集： eclat</p>
+<ol>
+<li><p>序列模式<br>常用的包： arulesSequences<br>SPADE算法： cSPADE</p>
+</li>
+<li><p>时间序列<br>常用的包： timsac<br>时间序列构建函数： ts<br>成分分解: decomp, decompose, stl, tsr</p>
+</li>
+<li><p>统计<br>常用的包： Base R, nlme<br>方差分析: aov, anova<br>密度分析: density<br>假设检验: t.test, prop.test, anova, aov<br>线性混合模型：lme<br>主成分分析和因子分析：princomp</p>
+</li>
+<li><p>图表<br>条形图: barplot<br>饼图: pie<br>散点图: dotchart<br>直方图: hist<br>密度图: densityplot<br>蜡烛图, 箱形图 boxplot<br>QQ (quantile-quantile) 图: qqnorm, qqplot, qqline<br>Bi-variate plot: coplot<br>树: rpart<br>Parallel coordinates: parallel, paracoor, parcoord<br>热图, contour: contour, filled.contour<br>其他图: stripplot, sunflowerplot, interaction.plot, matplot, fourfoldplot,<br>assocplot, mosaicplot<br>保存的图表格式: pdf, postscript, win.metafile, jpeg, bmp, png</p>
+</li>
+<li><p>数据操作<br>缺失值：na.omit<br>变量标准化：scale<br>变量转置：t<br>抽样：sample<br>堆栈：stack, unstack<br>其他：aggregate, merge, reshape</p>
+</li>
+<li><p>与数据挖掘软件Weka做接口<br>RWeka: 通过这个接口，可以在R中使用Weka的所有算法。</p>
+</li>
+</ol>
+<p>参考文献:<a href="http://www.douban.com/note/262946137/" target="_blank" rel="external">http://www.douban.com/note/262946137/</a></p>
+<hr>
+<h4 id="u5FAE_u4FE1_u626B_u4E0B_u9762_u7684_u4E8C_u7EF4_u7801_u83B7_u53D6_u66F4_u591A_u5E72_u8D27"><a href="#u5FAE_u4FE1_u626B_u4E0B_u9762_u7684_u4E8C_u7EF4_u7801_u83B7_u53D6_u66F4_u591A_u5E72_u8D27" class="headerlink" title="微信扫下面的二维码获取更多干货"></a>微信扫下面的二维码获取更多干货</h4><p><img src="http://7xp4nl.com1.z0.glb.clouddn.com/qrcode_for_gh_217533791e24_1280.jpg?imageView2/1/w/200/h/200/q/100" alt=""><br>微信搜索 databox</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[python pandas]]></title>
       <url>http://pengyq.org/2015/12/14/python-pandas/</url>
       <content type="html"><![CDATA[<html><br><body style="margin:0"><br><iframe src="http://nbviewer.ipython.org/github/pengyq/pandas_share/blob/master/pandas_demo.ipynb" style="width:100%;height:700px;border:0px" target="_parent"></iframe><br></body><br></html>]]></content>
