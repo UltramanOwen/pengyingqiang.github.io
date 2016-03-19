@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?1f37d6e1c93f4addbd32c6f1b3266ade";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+  <title>zeppelin | Box</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="很久没更新博客了，今天给大家分享一个spark生态系统的成员——zeppelin，一个可以简单数据可视化，类似ipython notebook的工具。
+1.下载官网：https://zeppelin.incubator.apache.org/zeppelin源码托管于github,首先我们获取它的最新源码https://github.com/apache/incubator-zeppelin博主下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zeppelin">
+<meta property="og:url" content="http://pengyq.org/2016/03/19/zeppelin/index.html">
+<meta property="og:site_name" content="Box">
+<meta property="og:description" content="很久没更新博客了，今天给大家分享一个spark生态系统的成员——zeppelin，一个可以简单数据可视化，类似ipython notebook的工具。
+1.下载官网：https://zeppelin.incubator.apache.org/zeppelin源码托管于github,首先我们获取它的最新源码https://github.com/apache/incubator-zeppelin博主下">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin1.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppeline3.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin4.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin5.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin6.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin8.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin9.png?imageView2/2/w/500/h/400/q/100">
+<meta property="og:image" content="http://7xp4nl.com1.z0.glb.clouddn.com/qrcode_for_gh_217533791e24_1280.jpg?imageView2/1/w/200/h/200/q/100">
+<meta property="og:updated_time" content="2016-03-19T14:46:02.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="zeppelin">
+<meta name="twitter:description" content="很久没更新博客了，今天给大家分享一个spark生态系统的成员——zeppelin，一个可以简单数据可视化，类似ipython notebook的工具。
+1.下载官网：https://zeppelin.incubator.apache.org/zeppelin源码托管于github,首先我们获取它的最新源码https://github.com/apache/incubator-zeppelin博主下">
+  
+    <link rel="alternative" href="/atom.xml" title="Box" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/box.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Box</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">业精于勤荒于嬉，行成于思毁于随</p>
+		
+
+		
+			<div class="switch-btn">
+			
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0"> 
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+				</div>
+			
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/随笔">随笔</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/pengyq" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/kerwinpeng" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/pengyq" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:peng.yq@qq.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/undefined/" style="font-size: 10px;"></a> <a href="/tags/javascript/" style="font-size: 10px;"> javascript</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/zeppelin/" style="font-size: 10px;">zeppelin</a> <a href="/tags/公式/" style="font-size: 10px;">公式</a> <a href="/tags/算法包/" style="font-size: 10px;">算法包</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">就职于腾讯。擅长数据分析，大数据平台架构，数据库，Java Web，Python，数据挖掘爱好者 …</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Box</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/box.png" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Box</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">业精于勤荒于嬉，行成于思毁于随</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/随笔">随笔</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/pengyq" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/kerwinpeng" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/pengyq" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:peng.yq@qq.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-zeppelin" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/19/zeppelin/" class="article-date">
+  	<time datetime="2016-03-19T13:45:00.000Z" itemprop="datePublished">2016-03-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zeppelin
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zeppelin/">zeppelin</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/数据可视化/">数据可视化</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很久没更新博客了，今天给大家分享一个spark生态系统的成员——zeppelin，一个可以简单数据可视化，类似ipython notebook的工具。</p>
+<h2 id="1-_u4E0B_u8F7D"><a href="#1-_u4E0B_u8F7D" class="headerlink" title="1.下载"></a>1.下载</h2><p>官网：<a href="https://zeppelin.incubator.apache.org/" target="_blank" rel="external">https://zeppelin.incubator.apache.org/</a><br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin1.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin"><br>zeppelin源码托管于github,首先我们获取它的最新源码<br><a href="https://github.com/apache/incubator-zeppelin" target="_blank" rel="external">https://github.com/apache/incubator-zeppelin</a><br>博主下载的版本是0.6.0-incubating-SNAPSHOT</p>
+<h2 id="2-__u7F16_u8BD1"><a href="#2-__u7F16_u8BD1" class="headerlink" title="2. 编译"></a>2. 编译</h2><p>环境准备：  </p>
+<ul>
+<li>maven </li>
+<li>node   </li>
+<li>npm<br>在zeppelin源码home目录下执行如下命令开始编译<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package -Pbuild-distr  -Phadoop-<span class="number">2.6</span> -Pyarn -Pspark-<span class="number">1.5</span> -Dspark.version=<span class="number">1.5</span><span class="number">.1</span> -Ppyspark -DskipTests</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>编译注意事项：</p>
+<p>  以上是摘要<br><a id="more"></a><br>  以下是余下全文</p>
+<ol>
+<li>注意maven package命令后面 的参数。选择合适自己的Hadoop和spark版本。</li>
+<li>zeppelin可以支持多种数据源连接，0.6版本包含了对hive的支持，根据自己的实际情况考虑是否要修改<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#25105;&#36825;&#36793;&#20351;&#29992;&#30340;&#26159;hive 0.12&#25152;&#20197;&#20462;&#25913;&#19978;&#36848;&#37197;&#32622;&#25991;&#20214;&#10;3. maven&#23613;&#37327;&#36873;&#25321;&#22269;&#20869;&#30340;&#24211;&#65292;&#36825;&#26679;&#32534;&#35793;&#30340;&#26102;&#20505;&#19979;&#36733;&#30456;&#20851;jar&#20381;&#36182;&#36895;&#24230;&#24555;&#24456;&#22810;&#10;4. zeppelin web &#26159;node js&#24320;&#21457;&#30340;&#65292;&#23427;&#30340;&#20381;&#36182;&#31649;&#29702;&#24037;&#20855;```bower``` &#20063;&#21487;&#33021;&#36935;&#21040;&#19968;&#20123;&#19979;&#36733;&#20381;&#36182;&#32852;&#32593;&#22833;&#36133;&#30340;&#38382;&#39064;&#65292;&#25105;&#36825;&#37324;&#21152;&#19978;&#20102;&#20844;&#21496;&#30340;&#20195;&#29702;``` incubator-zeppelin-master\zeppelin-web\.bowerrc</span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">directory</span>": <span class="value"><span class="string">"bower_components"</span></span>,</span><br><span class="line">  "<span class="attribute">json</span>": <span class="value"><span class="string">"bower.json"</span></span>,</span><br><span class="line">  "<span class="attribute">proxy</span>": <span class="value"><span class="string">"http://xxxx:8080"</span></span>,</span><br><span class="line">  "<span class="attribute">https-proxy</span>": <span class="value"><span class="string">"http://xxxx:8080"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>除了遇到上面的情况，有些依赖托管雨Github 编译过程需要去github下载依赖源码出现网络连接不上.<br>这里有两个设置的地方,git 配置修改走http协议<figure class="highlight"><figcaption><span>config --global url."https://".insteadOf git://```环境变量加架上http代理```set HTTP_PROXY=http://xxx:8080```   </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#26368;&#32456;&#30340;&#32534;&#35793;&#32467;&#26524;&#22914;&#19979;&#65306;&#10;![zeppelin](http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin2.png?imageView2/2/w/500/h/400/q/100)&#10;&#10;## 3. &#23433;&#35013;&#37197;&#32622;&#10;#### conf/zeppelin-env.sh</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>export JAVA_HOME=/data1/xxx/jdk<br>export MASTER=spark://xxxxx:7070<br>export SPARK_HOME=/data1/xxx/spark<br>export SPARK_APP_NAME=zeppelin<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#### conf/zeppelin-site.xml</span></span><br></pre></td></tr></table></figure></p>
+<p><property><br>  <name>zeppelin.server.addr</name><br>  <value>0.0.0.0</value><br>  <description>Server address</description><br></property></p>
+<p><property><br>  <name>zeppelin.server.port</name><br>  <value>8081</value><br>  <description>Server port.</description><br></property><br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">访问连接 ```http://hostname:</span><span class="number">8081</span><span class="escape">``</span><span class="escape">`即</span>可看到 <span class="escape">``</span><span class="escape">`z</span>eppelin<span class="escape">``</span><span class="escape">`的</span>主页</span><br><span class="line"></span><br><span class="line">## <span class="number">4</span>. Interpreter配置</span><br><span class="line">举例jdbc interpreter</span><br><span class="line">最好自己下载一些jdbc驱动放在<span class="escape">``</span><span class="escape">`z</span>eppelin/interpreter/jdbc/<span class="escape">``</span><span class="escape">`目</span>录下</span><br><span class="line">前面讲到还有个hive interpreter 其实有了jdbc interpreter都没必要存在了，因为其原理也是通过hive server的jdbc 接口连接查询数据。jdbc interpreter更通用一些</span><br><span class="line"></span><br><span class="line">注意连连hive的时候，要用hive server2，并且注意hive jdbc 等jar版本一致 。   </span><br><span class="line"></span><br><span class="line"><span class="escape">``</span><span class="escape">`h</span>ive --service hiveserver2 --hiveconf hive.server2.thrift.port=<span class="number">10003</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="5-__u4F7F_u7528_u793A_u4F8B"><a href="#5-__u4F7F_u7528_u793A_u4F8B" class="headerlink" title="5. 使用示例"></a>5. 使用示例</h2><p>执行spark程序并把结果存在临时内存表里，可以用sql语法对表进行统计分析<br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppeline3.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin spark"><br>sql查询和可视化，类似于olap的简单操作<br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin4.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin sql"><br>sql动态表单<br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin5.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin sql"></p>
+<p>report view<br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin6.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin report view"></p>
+<p>display html<br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin8.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin display html"></p>
+<p>display table<br><img src="http://7xp4nl.com1.z0.glb.clouddn.com/zeppelin9.png?imageView2/2/w/500/h/400/q/100" alt="zeppelin display table"></p>
+<hr>
+<h4 id="u5FAE_u4FE1_u626B_u4E0B_u9762_u7684_u4E8C_u7EF4_u7801_u83B7_u53D6_u66F4_u591A_u5E72_u8D27"><a href="#u5FAE_u4FE1_u626B_u4E0B_u9762_u7684_u4E8C_u7EF4_u7801_u83B7_u53D6_u66F4_u591A_u5E72_u8D27" class="headerlink" title="微信扫下面的二维码获取更多干货"></a>微信扫下面的二维码获取更多干货</h4><p><img src="http://7xp4nl.com1.z0.glb.clouddn.com/qrcode_for_gh_217533791e24_1280.jpg?imageView2/1/w/200/h/200/q/100" alt=""><br>微信搜索 databox</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/28/如何快速适应职场环境/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何快速适应职场环境</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="zeppelin" data-title="zeppelin" data-url="http://pengyq.org/2016/03/19/zeppelin/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"pengyq"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		 Box
+    	</div>
+      	<div class="footer-right">
+          Copyright &copy; 2016 [<a href="http://pengyq.org/" target="_blank">pengyq.org</a>]  Powered By pengyq
+        <!--
+        	<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	-->
+        </div>
+        
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
