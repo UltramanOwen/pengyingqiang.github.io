@@ -121,7 +121,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/undefined/" style="font-size: 10px;"></a> <a href="/tags/javascript/" style="font-size: 10px;"> javascript</a> <a href="/tags/Hive/" style="font-size: 10px;">Hive</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/spark/" style="font-size: 10px;">spark</a> <a href="/tags/zeppelin/" style="font-size: 10px;">zeppelin</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/公式/" style="font-size: 10px;">公式</a> <a href="/tags/小文件/" style="font-size: 10px;">小文件</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/理论/" style="font-size: 10px;">理论</a> <a href="/tags/算法包/" style="font-size: 10px;">算法包</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+						<a href="/tags/undefined/" style="font-size: 10px;"></a> <a href="/tags/javascript/" style="font-size: 10px;"> javascript</a> <a href="/tags/Hive/" style="font-size: 15px;">Hive</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/matplotlib/" style="font-size: 10px;">matplotlib</a> <a href="/tags/pandas/" style="font-size: 10px;">pandas</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/spark/" style="font-size: 15px;">spark</a> <a href="/tags/zeppelin/" style="font-size: 10px;">zeppelin</a> <a href="/tags/优化/" style="font-size: 10px;">优化</a> <a href="/tags/公式/" style="font-size: 10px;">公式</a> <a href="/tags/小文件/" style="font-size: 10px;">小文件</a> <a href="/tags/数据挖掘/" style="font-size: 15px;">数据挖掘</a> <a href="/tags/理论/" style="font-size: 10px;">理论</a> <a href="/tags/算法包/" style="font-size: 10px;">算法包</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
 					</div>
 				</section>
 				
@@ -186,6 +186,65 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-spark和hive数据打通" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/28/spark和hive数据打通/" class="article-date">
+  	<time datetime="2016-06-28T02:59:00.000Z" itemprop="datePublished">2016-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/28/spark和hive数据打通/">spark和hive数据打通</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="u4E3A_u4EC0_u4E48_u8981_u505A_u8FD9_u4E2A_u4E8B_u60C5_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u8981_u505A_u8FD9_u4E2A_u4E8B_u60C5_uFF1F" class="headerlink" title="为什么要做这个事情？"></a>为什么要做这个事情？</h2><p>Hive管理的数据本身就带有表结构，比如数据类型，字段名<br>在spark机器学习数据处理过程中，直接读取文件的方式需要从文件转换到dataframe，这个时候最麻烦的就是Schema<br>如果打通hive和spark，我们就可以直接在hive中定义好表结构,在spark中直接使用。非常省事，也不用关心hive表数据是哪种文件格式了，RCFILE，TextFile等全部兼容</p>
+<h2 id="u73AF_u5883_u51C6_u5907"><a href="#u73AF_u5883_u51C6_u5907" class="headerlink" title="环境准备"></a>环境准备</h2><p>安装hive和安装spark具体安装过程这里就不详细介绍了。<br>主要讲下，spark如何整合hive<br>Copy hive安装目录下的 hive-site.xml到 $SPARK_HOME/conf目录<br>编辑spark-env.sh<br>添加如下两行：<br>export HIVE_HOME=/data/hive<br>export SPARK_CLASSPATH=$HIVE_HOME/lib/mysql-connector-java-5.1.26-bin.jar:$SPARK_CLASSPATH<br>作用是，让spark可以知道连接那个hive源数据库，并且吧元数据库连接的驱动程序加载到classpath</p>
+<h2 id="Spark-sql"><a href="#Spark-sql" class="headerlink" title="Spark-sql"></a>Spark-sql</h2><p>执行 spar-sql命令，进入命令行模式，就可以和hive命令行一样执行HQL了</p>
+<h2 id="spark_u7F16_u7A0B"><a href="#spark_u7F16_u7A0B" class="headerlink" title="spark编程"></a>spark编程</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">val conf=new <span class="function"><span class="title">SparkConf</span><span class="params">()</span></span></span><br><span class="line">conf.<span class="function"><span class="title">setAppName</span><span class="params">(<span class="string">"test"</span>)</span></span></span><br><span class="line">val sc = new <span class="function"><span class="title">SparkContext</span><span class="params">(conf)</span></span></span><br><span class="line">val sqlContext = new <span class="function"><span class="title">SQLContext</span><span class="params">(sc)</span></span></span><br><span class="line">val hiveContext=new <span class="function"><span class="title">HiveContext</span><span class="params">(sc)</span></span></span><br><span class="line">val data=hiveContext.<span class="function"><span class="title">sql</span><span class="params">(args(<span class="number">0</span>)</span></span>)</span><br><span class="line">  data.<span class="function"><span class="title">printSchema</span><span class="params">()</span></span></span><br><span class="line">  data.<span class="function"><span class="title">show</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="u8FD0_u884C_u7A0B_u5E8F"><a href="#u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="运行程序"></a>运行程序</h2><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spark-submit \</span><br><span class="line">  -<span class="ruby">-<span class="class"><span class="keyword">class</span> <span class="title">com</span>.<span class="title">tencent</span>.<span class="title">your</span>.<span class="title">package</span>.<span class="title">Test</span> \</span></span><br><span class="line"></span>  -<span class="ruby">-master  <span class="symbol">spark:</span>/<span class="regexp">/master:7077 \</span><br><span class="line"></span></span>  -<span class="ruby"><span class="regexp">-executor-memory 1G \</span><br><span class="line"></span></span>  -<span class="ruby"><span class="regexp">-total-executor-cores 10 \</span><br><span class="line"></span></span> your_spark.jar "select * from table where ds=20160616 limit 10"</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hive/">Hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-一些感悟－2016-6-27" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -856,69 +915,6 @@ var _hmt = _hmt || [];
       
         <p class="article-more-link">
           <a  href="/2015/12/13/python爬虫框架Scrapy入门demo/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-python-制作logo" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/12/python-制作logo/" class="article-date">
-  	<time datetime="2015-12-12T08:19:00.000Z" itemprop="datePublished">2015-12-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/12/python-制作logo/">python 制作logo</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.figure(figsize=(<span class="number">6</span>,<span class="number">6</span>))</span><br><span class="line">ax = plt.axes([<span class="number">0.025</span>,<span class="number">0.025</span>,<span class="number">0.95</span>,<span class="number">0.95</span>], polar=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">N = <span class="number">20</span></span><br><span class="line">theta = np.arange(<span class="number">0.0</span>, <span class="number">2</span>*np.pi, <span class="number">2</span>*np.pi/N)</span><br><span class="line">radii = <span class="number">10</span>*np.random.rand(N)</span><br><span class="line">width = np.pi/<span class="number">4</span>*np.random.rand(N)</span><br><span class="line">bars = plt.bar(theta, radii, width=width, bottom=<span class="number">0.0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> r,bar <span class="keyword">in</span> zip(radii, bars):</span><br><span class="line">    bar.set_facecolor( plt.cm.jet(r/<span class="number">10.</span>))</span><br><span class="line">    bar.set_alpha(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">ax.set_xticklabels([])</span><br><span class="line">ax.set_yticklabels([])</span><br><span class="line"></span><br><span class="line">eqs = []</span><br><span class="line">eqs.append((<span class="string">r"$W^&#123;3\beta&#125;_&#123;\delta_1 \rho_1 \sigma_2&#125; = U^&#123;3\beta&#125;_&#123;\delta_1 \rho_1&#125; + \frac&#123;1&#125;&#123;8 \pi 2&#125; \int^&#123;\alpha_2&#125;_&#123;\alpha_2&#125; d \alpha^\prime_2 \left[\frac&#123; U^&#123;2\beta&#125;_&#123;\delta_1 \rho_1&#125; - \alpha^\prime_2U^&#123;1\beta&#125;_&#123;\rho_1 \sigma_2&#125; &#125;&#123;U^&#123;0\beta&#125;_&#123;\rho_1 \sigma_2&#125;&#125;\right]$"</span>))</span><br><span class="line">eqs.append((<span class="string">r"$\frac&#123;d\rho&#125;&#123;d t&#125; + \rho \vec&#123;v&#125;\cdot\nabla\vec&#123;v&#125; = -\nabla p + \mu\nabla^2 \vec&#123;v&#125; + \rho \vec&#123;g&#125;$"</span>))</span><br><span class="line">eqs.append((<span class="string">r"$\int_&#123;-\infty&#125;^\infty e^&#123;-x^2&#125;dx=\sqrt&#123;\pi&#125;$"</span>))</span><br><span class="line">eqs.append((<span class="string">r"$E = mc^2 = \sqrt&#123;&#123;m_0&#125;^2c^4 + p^2c^2&#125;$"</span>))</span><br><span class="line">eqs.append((<span class="string">r"$F_G = G\frac&#123;m_1m_2&#125;&#123;r^2&#125;$"</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">plt.axes([<span class="number">0.025</span>,<span class="number">0.025</span>,<span class="number">0.95</span>,<span class="number">0.95</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>):</span><br><span class="line">    index = np.random.randint(<span class="number">0</span>,len(eqs))</span><br><span class="line">    eq = eqs[index]</span><br><span class="line">    size = np.random.uniform(<span class="number">12</span>,<span class="number">32</span>)</span><br><span class="line">    x,y = np.random.uniform(<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">    alpha = np.random.uniform(<span class="number">0.15</span>,<span class="number">.60</span>)</span><br><span class="line">    plt.text(x, y, eq, ha=<span class="string">'center'</span>, va=<span class="string">'center'</span>, color=<span class="string">"#11557c"</span>, alpha=alpha,</span><br><span class="line">             transform=plt.gca().transAxes, fontsize=size, clip_on=<span class="keyword">True</span>)</span><br><span class="line">plt.text(<span class="number">0.23</span>,<span class="number">0.6</span>,<span class="string">'databox'</span>,fontsize=<span class="number">58</span>,color=<span class="string">"#4a86e8"</span>,alpha=<span class="number">0.95</span>)</span><br><span class="line">plt.xticks([]), plt.yticks([])</span><br><span class="line"><span class="comment">#savefig('databox.png',dpi=48)</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="http://7xp4nl.com1.z0.glb.clouddn.com/databox.jpg?imageView2/2/w/350/h/350/q/90|watermark/2/text/cGVuZ3lxLm9yZw==/font/5b6u6L2v6ZuF6buR/fontsize/500/fill/I0VGRUZFRg==/dissolve/100/gravity/South/dy/10" alt=""><br>以上是摘要<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/matplotlib/">matplotlib</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/python/">python</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/12/python-制作logo/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
